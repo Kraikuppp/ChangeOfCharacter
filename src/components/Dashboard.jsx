@@ -265,21 +265,21 @@ export default function Dashboard({ session }) {
       {/* Gradient fade from top */}
       <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-primary/20 to-transparent pointer-events-none" />
       
-      {/* Avatar button - aligned with main card */}
-      <div className="absolute top-28 right-52 z-50">
+      {/* Avatar button - responsive positioning */}
+      <div className="fixed top-4 right-4 z-50 md:absolute md:top-6 md:right-6">
         <button
           onClick={() => setShowProfile(true)}
-          className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center overflow-hidden shadow-lg hover:scale-105 transition-transform border-2 border-white"
+          className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center overflow-hidden shadow-lg hover:scale-105 transition-transform border-2 border-white"
         >
           {avatarUrl ? (
             <img src={avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
           ) : (
-            <User className="w-6 h-6 text-white" />
+            <User className="w-5 h-5 md:w-6 md:h-6 text-white" />
           )}
         </button>
       </div>
 
-      <main className="max-w-6xl mx-auto px-4 py-6 pt-28">
+      <main className="max-w-6xl mx-auto px-4 py-6 pt-20 md:pt-28">
         <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
           <button
             onClick={() => setActiveTab('dashboard')}
