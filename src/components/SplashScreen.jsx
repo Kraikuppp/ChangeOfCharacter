@@ -25,7 +25,7 @@ export default function SplashScreen({ onComplete }) {
   }, [onComplete])
 
   return (
-    <div className="fixed inset-0 bg-gradient-to-br from-primary via-secondary to-primary-dark flex flex-col items-center justify-center z-50">
+    <div className="fixed inset-0 bg-gradient-to-br from-primary-darker via-primary-dark to-primary flex flex-col items-center justify-center z-50">
       <h1 className="text-6xl font-bold text-white tracking-wide animate-scale-in">
         CHocH
       </h1>

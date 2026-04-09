@@ -2,27 +2,25 @@
 
 /* Custom Color Palette - Tailwind v4 Theme */
 @theme {
-  --color-primary: #4E8D9C;
-  --color-primary-dark: #3D7A89;
-  --color-primary-light: #6BA3B1;
-  --color-secondary: #85C79A;
-  --color-secondary-dark: #6BB382;
-  --color-secondary-light: #A3D8B3;
-  --color-background: #EDF7BD;
-  --color-background-dark: #D9E9A8;
+  --color-primary: #9CD5FF;
+  --color-primary-dark: #7AAACE;
+  --color-primary-darker: #355872;
+  --color-secondary: #7AAACE;
+  --color-secondary-dark: #5B8FB8;
+  --color-background: #F0F7FF;
+  --color-background-dark: #E0EEFF;
 }
 
 :root {
-  --color-primary: #4E8D9C;
-  --color-primary-dark: #3D7A89;
-  --color-primary-light: #6BA3B1;
-  --color-secondary: #85C79A;
-  --color-secondary-dark: #6BB382;
-  --color-secondary-light: #A3D8B3;
-  --color-background: #EDF7BD;
-  --color-background-dark: #D9E9A8;
-  --color-text: #2D3748;
-  --color-text-light: #4A5568;
+  --color-primary: #9CD5FF;
+  --color-primary-dark: #7AAACE;
+  --color-primary-darker: #355872;
+  --color-secondary: #7AAACE;
+  --color-secondary-dark: #5B8FB8;
+  --color-background: #F0F7FF;
+  --color-background-dark: #E0EEFF;
+  --color-text: #355872;
+  --color-text-light: #5B7A94;
 }
 
 * {
