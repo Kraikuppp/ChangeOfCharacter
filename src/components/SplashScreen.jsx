@@ -26,18 +26,11 @@ export default function SplashScreen({ onComplete }) {
 
   return (
     <div className="fixed inset-0 bg-gradient-to-br from-blue-400 via-sky-500 to-indigo-500 flex flex-col items-center justify-center z-50">
-      <div className="relative">
-        <div className="w-24 h-24 rounded-3xl bg-white/20 backdrop-blur-sm flex items-center justify-center animate-pulse-slow overflow-hidden">
-          <img src="/logo.png" alt="CHocH" className="w-20 h-20 object-contain animate-bounce-slow" />
-        </div>
-        <div className="absolute -inset-4 rounded-3xl bg-white/10 animate-ping-slow" />
-      </div>
-
-      <h1 className="text-4xl font-bold text-white mt-8 tracking-wide">
+      <h1 className="text-6xl font-bold text-white tracking-wide animate-scale-in">
         CHocH
       </h1>
       
-      <p className={`text-white/80 mt-2 text-lg transition-all duration-500 ${showText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+      <p className={`text-white/80 mt-4 text-lg transition-all duration-500 ${showText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
         Change of Character
       </p>
 
