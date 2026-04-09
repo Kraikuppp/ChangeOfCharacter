@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { supabase } from '../lib/supabase'
-import { UserPlus, LogIn, Mail, Lock, User, Eye, EyeOff, Check, X } from 'lucide-react'
+import { UserPlus, LogIn, Mail, Lock, User, Eye, EyeOff, Check, X, KeyRound, ArrowLeft } from 'lucide-react'
 
 export default function Auth() {
   const [isSignUp, setIsSignUp] = useState(false)
@@ -9,6 +9,14 @@ export default function Auth() {
   const [showPassword, setShowPassword] = useState(false)
   const [step, setStep] = useState(1)
   const [isAnimating, setIsAnimating] = useState(false)
+  
+  // Forgot password states
+  const [showForgotPassword, setShowForgotPassword] = useState(false)
+  const [resetStep, setResetStep] = useState(1)
+  const [resetEmail, setResetEmail] = useState('')
+  const [otpCode, setOtpCode] = useState('')
+  const [newPassword, setNewPassword] = useState('')
+  const [resetSuccess, setResetSuccess] = useState(false)
   
   const [formData, setFormData] = useState({
     email: '',
@@ -160,6 +168,84 @@ export default function Auth() {
     }, 300)
   }
 
+  // Forgot password functions
+  const handleSendOTP = async (e) => {
+    e.preventDefault()
+    if (!resetEmail) {
+      setMessage('กรุณากรอกอีเมล')
+      return
+    }
+
+    setLoading(true)
+    setMessage('')
+
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(resetEmail, {
+        redirectTo: `${window.location.origin}/reset-password`
+      })
+
+      if (error) throw error
+
+      setResetStep(2)
+      setMessage('ส่งรหัส OTP ไปยังอีเมลของคุณแล้ว กรุณาตรวจสอบอีเมล')
+    } catch (error) {
+      setMessage(error.message || 'เกิดข้อผิดพลาด กรุณาลองใหม่')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleVerifyOTP = async (e) => {
+    e.preventDefault()
+    if (!otpCode || !newPassword) {
+      setMessage('กรุณากรอกข้อมูลให้ครบถ้วน')
+      return
+    }
+
+    if (newPassword.length < 8) {
+      setMessage('รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร')
+      return
+    }
+
+    setLoading(true)
+    setMessage('')
+
+    try {
+      // Verify OTP and update password
+      const { error: verifyError } = await supabase.auth.verifyOtp({
+        email: resetEmail,
+        token: otpCode,
+        type: 'recovery'
+      })
+
+      if (verifyError) throw verifyError
+
+      // Update password
+      const { error: updateError } = await supabase.auth.updateUser({
+        password: newPassword
+      })
+
+      if (updateError) throw updateError
+
+      setResetSuccess(true)
+      setMessage('เปลี่ยนรหัสผ่านสำเร็จ! กรุณาเข้าสู่ระบบด้วยรหัสผ่านใหม่')
+    } catch (error) {
+      setMessage(error.message || 'รหัส OTP ไม่ถูกต้องหรือหมดอายุ')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const backToSignIn = () => {
+    setShowForgotPassword(false)
+    setResetStep(1)
+    setResetEmail('')
+    setOtpCode('')
+    setNewPassword('')
+    setResetSuccess(false)
+    setMessage('')
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-md">
@@ -170,7 +256,102 @@ export default function Auth() {
         </div>
 
         <div className={`bg-white/95 backdrop-blur rounded-2xl shadow-xl p-6 md:p-8 transition-all duration-300 ${isAnimating ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
-          {isSignUp ? (
+          {showForgotPassword ? (
+            <>
+              <button
+                type="button"
+                onClick={backToSignIn}
+                className="flex items-center gap-2 text-gray-600 hover:text-gray-800 mb-4 transition-colors"
+              >
+                <ArrowLeft className="w-5 h-5" />
+                <span>Back</span>
+              </button>
+
+              {resetSuccess ? (
+                <div className="text-center py-6">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Check className="w-8 h-8 text-green-600" />
+                  </div>
+                  <h2 className="text-xl font-bold text-gray-800 mb-2">Success!</h2>
+                  <p className="text-gray-600 mb-6">{message}</p>
+                  <button
+                    onClick={backToSignIn}
+                    className="w-full py-3 px-4 bg-primary text-white rounded-xl font-medium hover:bg-primary-dark transition-colors"
+                  >
+                    Sign In
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <h2 className="text-xl font-bold text-gray-800 mb-2">Forgot Password</h2>
+                  <p className="text-gray-500 text-sm mb-6">
+                    {resetStep === 1 
+                      ? 'Enter your email to receive a password reset link' 
+                      : 'Check your email for the reset link'}
+                  </p>
+
+                  {resetStep === 1 ? (
+                    <form onSubmit={handleSendOTP} className="space-y-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <div className="relative">
+                          <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                          <input
+                            type="email"
+                            value={resetEmail}
+                            onChange={(e) => setResetEmail(e.target.value)}
+                            className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                            placeholder="your@email.com"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      {message && (
+                        <div className={`p-3 rounded-lg text-sm ${
+                          message.includes('success') || message.includes('sent') || message.includes('OTP')
+                            ? 'bg-green-50 text-green-700'
+                            : 'bg-red-50 text-red-700'
+                        }`}>
+                          {message}
+                        </div>
+                      )}
+
+                      <button
+                        type="submit"
+                        disabled={loading}
+                        className="w-full py-3 px-4 bg-primary text-white rounded-xl font-medium hover:bg-primary-dark disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
+                      >
+                        {loading ? (
+                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        ) : (
+                          <><KeyRound className="w-5 h-5" /> Send Reset Link</>
+                        )}
+                      </button>
+                    </form>
+                  ) : (
+                    <div className="text-center py-6">
+                      <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Mail className="w-8 h-8 text-primary" />
+                      </div>
+                      <p className="text-gray-600 mb-4">
+                        We've sent a password reset link to <strong>{resetEmail}</strong>
+                      </p>
+                      <p className="text-gray-500 text-sm mb-6">
+                        Click the link in the email to reset your password
+                      </p>
+                      <button
+                        onClick={backToSignIn}
+                        className="text-primary-dark hover:text-primary-darker font-medium"
+                      >
+                        Back to Sign In
+                      </button>
+                    </div>
+                  )}
+                </>
+              )}
+            </>
+          ) : isSignUp ? (
             <>
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-bold text-gray-800">สร้างบัญชีใหม่</h2>
@@ -471,6 +652,17 @@ export default function Auth() {
                   )}
                 </button>
               </form>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setShowForgotPassword(true)
+                  setMessage('')
+                }}
+                className="w-full mt-3 text-sm text-primary-dark hover:text-primary-darker text-center"
+              >
+                ลืมรหัสผ่าน?
+              </button>
             </>
           )}
 
