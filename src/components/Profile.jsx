@@ -145,11 +145,12 @@ export default function Profile({ session, onBack }) {
     }
 
     const { data } = supabase.storage.from('avatars').getPublicUrl(filePath)
-    setAvatarUrl(data.publicUrl)
+    const publicUrl = `${data.publicUrl}?t=${Date.now()}`
+    setAvatarUrl(publicUrl)
 
     await supabase
       .from('profiles')
-      .upsert({ id: user.id, avatar_url: data.publicUrl })
+      .upsert({ id: user.id, avatar_url: publicUrl })
 
     setUploading(false)
     setMessage('อัปโหลดรูปสำเร็จ!')
