@@ -13,7 +13,7 @@ export default defineConfig({
         name: 'CHocH - Change of Character',
         short_name: 'CHocH',
         description: 'Track calories, lose weight, exercise, and plan your health journey',
-        theme_color: '#355872',
+        theme_color: '#1D4ED8',
         background_color: '#ffffff',
         display: 'standalone',
         start_url: '/',
