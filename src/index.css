@@ -1,13 +1,38 @@
 @import "tailwindcss";
 
+/* Custom Color Palette - Tailwind v4 Theme */
+@theme {
+  --color-primary: #4E8D9C;
+  --color-primary-dark: #3D7A89;
+  --color-primary-light: #6BA3B1;
+  --color-secondary: #85C79A;
+  --color-secondary-dark: #6BB382;
+  --color-secondary-light: #A3D8B3;
+  --color-background: #EDF7BD;
+  --color-background-dark: #D9E9A8;
+}
+
+:root {
+  --color-primary: #4E8D9C;
+  --color-primary-dark: #3D7A89;
+  --color-primary-light: #6BA3B1;
+  --color-secondary: #85C79A;
+  --color-secondary-dark: #6BB382;
+  --color-secondary-light: #A3D8B3;
+  --color-background: #EDF7BD;
+  --color-background-dark: #D9E9A8;
+  --color-text: #2D3748;
+  --color-text-light: #4A5568;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   font-family: 'Prompt', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: #f9fafb;
-  color: #1f2937;
+  background-color: var(--color-background);
+  color: var(--color-text);
   margin: 0;
   min-height: 100vh;
 }

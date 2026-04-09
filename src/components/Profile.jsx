@@ -175,9 +175,9 @@ export default function Profile({ session, onBack }) {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-50 to-blue-50">
+    <div className="min-h-screen bg-background">
       {/* Gradient fade from top */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-sky-400/20 to-transparent pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-primary/20 to-transparent pointer-events-none" />
       
       <main className="max-w-2xl mx-auto px-4 py-6">
         <button
@@ -192,14 +192,14 @@ export default function Profile({ session, onBack }) {
           {/* Avatar Section */}
           <div className="flex flex-col items-center mb-8">
             <div className="relative">
-              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-sky-400 to-blue-500 flex items-center justify-center overflow-hidden">
+              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center overflow-hidden">
                 {avatarUrl ? (
                   <img src={avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
                 ) : (
                   <User className="w-12 h-12 text-white" />
                 )}
               </div>
-              <label className="absolute bottom-0 right-0 w-8 h-8 bg-sky-500 rounded-full flex items-center justify-center cursor-pointer hover:bg-sky-600 transition-colors shadow-lg">
+              <label className="absolute bottom-0 right-0 w-8 h-8 bg-primary rounded-full flex items-center justify-center cursor-pointer hover:bg-primary-dark transition-colors shadow-lg">
                 <Camera className="w-4 h-4 text-white" />
                 <input
                   type="file"
@@ -225,7 +225,7 @@ export default function Profile({ session, onBack }) {
                   type="text"
                   value={profile.username}
                   onChange={(e) => setProfile({ ...profile, username: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>
               <div>
@@ -233,7 +233,7 @@ export default function Profile({ session, onBack }) {
                 <select
                   value={profile.gender}
                   onChange={(e) => setProfile({ ...profile, gender: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                   <option value="male">ชาย</option>
                   <option value="female">หญิง</option>
@@ -248,7 +248,7 @@ export default function Profile({ session, onBack }) {
                   type="number"
                   value={profile.age}
                   onChange={(e) => setProfile({ ...profile, age: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>
               <div>
@@ -257,7 +257,7 @@ export default function Profile({ session, onBack }) {
                   type="number"
                   value={profile.weight}
                   onChange={(e) => setProfile({ ...profile, weight: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>
               <div>
@@ -266,7 +266,7 @@ export default function Profile({ session, onBack }) {
                   type="number"
                   value={profile.height}
                   onChange={(e) => setProfile({ ...profile, height: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500"
+                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>
             </div>
@@ -276,7 +276,7 @@ export default function Profile({ session, onBack }) {
               <select
                 value={profile.activityLevel}
                 onChange={(e) => setProfile({ ...profile, activityLevel: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500"
+                className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 {activityLevels.map(level => (
                   <option key={level.value} value={level.value}>{level.label}</option>
@@ -289,7 +289,7 @@ export default function Profile({ session, onBack }) {
               <select
                 value={profile.goal}
                 onChange={(e) => setProfile({ ...profile, goal: e.target.value })}
-                className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500"
+                className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 {goals.map(goal => (
                   <option key={goal.value} value={goal.value}>{goal.label}</option>
@@ -300,7 +300,7 @@ export default function Profile({ session, onBack }) {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-sky-500 text-white rounded-xl font-medium hover:bg-sky-600 disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
+              className="w-full py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary-dark disabled:opacity-50 transition-colors flex items-center justify-center gap-2"
             >
               {loading ? (
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -323,7 +323,7 @@ export default function Profile({ session, onBack }) {
                     type={showPassword ? 'text' : 'password'}
                     value={passwords.new}
                     onChange={(e) => setPasswords({ ...passwords, new: e.target.value })}
-                    className="w-full pl-10 pr-12 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500"
+                    className="w-full pl-10 pr-12 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="รหัสผ่านใหม่"
                   />
                   <button
@@ -344,7 +344,7 @@ export default function Profile({ session, onBack }) {
                     type={showPassword ? 'text' : 'password'}
                     value={passwords.confirm}
                     onChange={(e) => setPasswords({ ...passwords, confirm: e.target.value })}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500"
+                    className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="ยืนยันรหัสผ่านใหม่"
                   />
                 </div>
@@ -362,7 +362,7 @@ export default function Profile({ session, onBack }) {
 
           {message && (
             <div className={`mt-4 p-3 rounded-lg text-sm ${
-              message.includes('สำเร็จ') ? 'bg-sky-50 text-sky-700' : 'bg-red-50 text-red-700'
+              message.includes('สำเร็จ') ? 'bg-primary/10 text-primary' : 'bg-red-50 text-red-700'
             }`}>
               {message}
             </div>
