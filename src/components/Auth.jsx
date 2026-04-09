@@ -161,10 +161,10 @@ export default function Auth() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-emerald-50 to-teal-50">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-sky-50 to-blue-50">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-500 mb-4 shadow-lg animate-bounce-slow overflow-hidden">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-sky-400 to-blue-500 mb-4 shadow-lg animate-bounce-slow overflow-hidden">
             <img src="/logo.png" alt="CHocH" className="w-12 h-12 object-contain" />
           </div>
           <h1 className="text-3xl font-bold text-gray-800">CHocH</h1>
@@ -178,7 +178,7 @@ export default function Auth() {
                 <h2 className="text-xl font-bold text-gray-800">สร้างบัญชีใหม่</h2>
                 <div className="flex gap-1">
                   {[1, 2, 3].map(i => (
-                    <div key={i} className={`w-2 h-2 rounded-full transition-all duration-300 ${i === step ? 'bg-emerald-500 w-4' : 'bg-gray-200'}`} />
+                    <div key={i} className={`w-2 h-2 rounded-full transition-all duration-300 ${i === step ? 'bg-sky-500 w-4' : 'bg-gray-200'}`} />
                   ))}
                 </div>
               </div>
@@ -194,7 +194,7 @@ export default function Auth() {
                           type="text"
                           value={formData.username}
                           onChange={(e) => updateFormData('username', e.target.value)}
-                          className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                          className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
                           placeholder="กรอกชื่อผู้ใช้"
                           required
                         />
@@ -209,7 +209,7 @@ export default function Auth() {
                           type="email"
                           value={formData.email}
                           onChange={(e) => updateFormData('email', e.target.value)}
-                          className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                          className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
                           placeholder="your@email.com"
                           required
                         />
@@ -224,7 +224,7 @@ export default function Auth() {
                           type={showPassword ? 'text' : 'password'}
                           value={formData.password}
                           onChange={(e) => updateFormData('password', e.target.value)}
-                          className="w-full pl-10 pr-12 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                          className="w-full pl-10 pr-12 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
                           placeholder="ตั้งรหัสผ่าน"
                           required
                         />
@@ -241,23 +241,23 @@ export default function Auth() {
                     <div className="space-y-2 pt-2">
                       <p className="text-sm font-medium text-gray-700">เงื่อนไขรหัสผ่าน:</p>
                       <div className="grid grid-cols-2 gap-2 text-sm">
-                        <div className={`flex items-center gap-1 transition-colors ${passwordValidations.minLength ? 'text-emerald-600' : 'text-gray-400'}`}>
+                        <div className={`flex items-center gap-1 transition-colors ${passwordValidations.minLength ? 'text-sky-600' : 'text-gray-400'}`}>
                           {passwordValidations.minLength ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
                           <span>อย่างน้อย 8 ตัว</span>
                         </div>
-                        <div className={`flex items-center gap-1 transition-colors ${passwordValidations.hasUpper ? 'text-emerald-600' : 'text-gray-400'}`}>
+                        <div className={`flex items-center gap-1 transition-colors ${passwordValidations.hasUpper ? 'text-sky-600' : 'text-gray-400'}`}>
                           {passwordValidations.hasUpper ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
                           <span>ตัวพิมพ์ใหญ่ 1 ตัว</span>
                         </div>
-                        <div className={`flex items-center gap-1 transition-colors ${passwordValidations.hasLower ? 'text-emerald-600' : 'text-gray-400'}`}>
+                        <div className={`flex items-center gap-1 transition-colors ${passwordValidations.hasLower ? 'text-sky-600' : 'text-gray-400'}`}>
                           {passwordValidations.hasLower ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
                           <span>ตัวพิมพ์เล็ก 1 ตัว</span>
                         </div>
-                        <div className={`flex items-center gap-1 transition-colors ${passwordValidations.hasNumber ? 'text-emerald-600' : 'text-gray-400'}`}>
+                        <div className={`flex items-center gap-1 transition-colors ${passwordValidations.hasNumber ? 'text-sky-600' : 'text-gray-400'}`}>
                           {passwordValidations.hasNumber ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
                           <span>ตัวเลข 1 ตัว</span>
                         </div>
-                        <div className={`flex items-center gap-1 transition-colors ${passwordValidations.hasSpecial ? 'text-emerald-600' : 'text-gray-400'}`}>
+                        <div className={`flex items-center gap-1 transition-colors ${passwordValidations.hasSpecial ? 'text-sky-600' : 'text-gray-400'}`}>
                           {passwordValidations.hasSpecial ? <Check className="w-4 h-4" /> : <X className="w-4 h-4" />}
                           <span>อักขระพิเศษ 1 ตัว</span>
                         </div>
@@ -274,7 +274,7 @@ export default function Auth() {
                         <select
                           value={formData.gender}
                           onChange={(e) => updateFormData('gender', e.target.value)}
-                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
                         >
                           <option value="male">ชาย</option>
                           <option value="female">หญิง</option>
@@ -286,7 +286,7 @@ export default function Auth() {
                           type="number"
                           value={formData.age}
                           onChange={(e) => updateFormData('age', e.target.value)}
-                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
                           placeholder="ปี"
                           min="1"
                           max="120"
@@ -302,7 +302,7 @@ export default function Auth() {
                           type="number"
                           value={formData.weight}
                           onChange={(e) => updateFormData('weight', e.target.value)}
-                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
                           placeholder="กก."
                           step="0.1"
                           min="1"
@@ -315,7 +315,7 @@ export default function Auth() {
                           type="number"
                           value={formData.height}
                           onChange={(e) => updateFormData('height', e.target.value)}
-                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                          className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
                           placeholder="ซม."
                           min="1"
                           required
@@ -328,7 +328,7 @@ export default function Auth() {
                       <select
                         value={formData.activityLevel}
                         onChange={(e) => updateFormData('activityLevel', e.target.value)}
-                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
                       >
                         {activityLevels.map(level => (
                           <option key={level.value} value={level.value}>
@@ -352,8 +352,8 @@ export default function Auth() {
                             onClick={() => updateFormData('goal', goal.value)}
                             className={`p-4 rounded-xl border-2 text-center transition-all ${
                               formData.goal === goal.value
-                                ? 'border-emerald-500 bg-emerald-50 scale-105'
-                                : 'border-gray-200 hover:border-emerald-300'
+                                ? 'border-sky-500 bg-sky-50 scale-105'
+                                : 'border-gray-200 hover:border-sky-300'
                             }`}
                           >
                             <span className="text-2xl mb-1 block">{goal.icon}</span>
@@ -369,7 +369,7 @@ export default function Auth() {
                           type="checkbox"
                           checked={formData.agreeTerms}
                           onChange={(e) => updateFormData('agreeTerms', e.target.checked)}
-                          className="mt-1 w-5 h-5 rounded border-gray-300 text-emerald-500 focus:ring-emerald-500"
+                          className="mt-1 w-5 h-5 rounded border-gray-300 text-sky-500 focus:ring-sky-500"
                         />
                         <span className="text-sm text-gray-600">
                           ฉันยอมรับข้อกำหนดและเงื่อนไขการใช้บริการ และเข้าใจว่าข้อมูลสุขภาพของฉันจะถูกเก็บอย่างปลอดภัย
@@ -381,7 +381,7 @@ export default function Auth() {
 
                 {message && (
                   <div className={`mt-4 p-3 rounded-lg text-sm animate-fadeIn ${
-                    message.includes('กรุณาตรวจสอบอีเมล') ? 'bg-emerald-50 text-emerald-700' : 'bg-red-50 text-red-700'
+                    message.includes('กรุณาตรวจสอบอีเมล') ? 'bg-sky-50 text-sky-700' : 'bg-red-50 text-red-700'
                   }`}>
                     {message}
                   </div>
@@ -400,7 +400,7 @@ export default function Auth() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="flex-1 py-3 px-4 bg-emerald-500 text-white rounded-xl font-medium hover:bg-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
+                    className="flex-1 py-3 px-4 bg-sky-500 text-white rounded-xl font-medium hover:bg-sky-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
                   >
                     {loading ? (
                       <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -426,7 +426,7 @@ export default function Auth() {
                       type="email"
                       value={formData.email}
                       onChange={(e) => updateFormData('email', e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                      className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
                       placeholder="your@email.com"
                       required
                     />
@@ -441,7 +441,7 @@ export default function Auth() {
                       type={showPassword ? 'text' : 'password'}
                       value={formData.password}
                       onChange={(e) => updateFormData('password', e.target.value)}
-                      className="w-full pl-10 pr-12 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                      className="w-full pl-10 pr-12 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
                       placeholder="กรอกรหัสผ่าน"
                       required
                     />
@@ -464,7 +464,7 @@ export default function Auth() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3 px-4 bg-emerald-500 text-white rounded-xl font-medium hover:bg-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
+                  className="w-full py-3 px-4 bg-sky-500 text-white rounded-xl font-medium hover:bg-sky-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
                 >
                   {loading ? (
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -481,7 +481,7 @@ export default function Auth() {
               {isSignUp ? 'มีบัญชีอยู่แล้ว?' : 'ยังไม่มีบัญชี?'}
               <button
                 onClick={toggleAuthMode}
-                className="ml-1 text-emerald-600 font-medium hover:text-emerald-700"
+                className="ml-1 text-sky-600 font-medium hover:text-sky-700"
               >
                 {isSignUp ? 'เข้าสู่ระบบ' : 'สร้างบัญชีใหม่'}
               </button>

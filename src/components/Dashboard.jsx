@@ -261,15 +261,15 @@ export default function Dashboard({ session }) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-50 relative">
+    <div className="min-h-screen bg-gradient-to-br from-sky-50 to-blue-50 relative">
       {/* Gradient fade from top */}
-      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-emerald-400/30 to-transparent pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-sky-400/30 to-transparent pointer-events-none" />
       
       {/* Avatar button - aligned with main card */}
       <div className="absolute top-28 right-52 z-50">
         <button
           onClick={() => setShowProfile(true)}
-          className="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center overflow-hidden shadow-lg hover:scale-105 transition-transform border-2 border-white"
+          className="w-12 h-12 rounded-full bg-gradient-to-br from-sky-400 to-blue-500 flex items-center justify-center overflow-hidden shadow-lg hover:scale-105 transition-transform border-2 border-white"
         >
           {avatarUrl ? (
             <img src={avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
@@ -284,7 +284,7 @@ export default function Dashboard({ session }) {
           <button
             onClick={() => setActiveTab('dashboard')}
             className={`px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-colors ${
-              activeTab === 'dashboard' ? 'bg-emerald-500 text-white' : 'bg-white text-gray-600 hover:bg-gray-50'
+              activeTab === 'dashboard' ? 'bg-sky-500 text-white' : 'bg-white text-gray-600 hover:bg-gray-50'
             }`}
           >
             แดชบอร์ด
@@ -292,7 +292,7 @@ export default function Dashboard({ session }) {
           <button
             onClick={() => setActiveTab('calendar')}
             className={`px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-colors ${
-              activeTab === 'calendar' ? 'bg-emerald-500 text-white' : 'bg-white text-gray-600 hover:bg-gray-50'
+              activeTab === 'calendar' ? 'bg-sky-500 text-white' : 'bg-white text-gray-600 hover:bg-gray-50'
             }`}
           >
             ปฏิทิน
@@ -322,7 +322,7 @@ export default function Dashboard({ session }) {
 
               <div className="bg-white rounded-xl p-4 shadow-sm">
                 <div className="flex items-center gap-2 mb-2">
-                  <Target className="w-5 h-5 text-emerald-500" />
+                  <Target className="w-5 h-5 text-sky-500" />
                   <span className="text-sm text-gray-500">TDEE</span>
                 </div>
                 <p className="text-2xl font-bold text-gray-800">{stats.tdee}</p>
@@ -353,9 +353,9 @@ export default function Dashboard({ session }) {
               </div>
 
               <div className="grid grid-cols-3 gap-4 mb-6">
-                <div className="text-center p-4 bg-emerald-50 rounded-xl">
+                <div className="text-center p-4 bg-sky-50 rounded-xl">
                   <p className="text-sm text-gray-600 mb-1">บริโภค</p>
-                  <p className="text-xl font-bold text-emerald-600">{calorieStats.consumed}</p>
+                  <p className="text-xl font-bold text-sky-600">{calorieStats.consumed}</p>
                   <p className="text-xs text-gray-400">แคลอรี่</p>
                 </div>
                 <div className="text-center p-4 bg-orange-50 rounded-xl">
@@ -391,7 +391,7 @@ export default function Dashboard({ session }) {
                 <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
                   <div
                     className={`h-full rounded-full transition-all ${
-                      calorieStats.net > stats.targetCalories ? 'bg-red-500' : 'bg-emerald-500'
+                      calorieStats.net > stats.targetCalories ? 'bg-red-500' : 'bg-sky-500'
                     }`}
                     style={{ width: `${Math.min((calorieStats.net / stats.targetCalories) * 100, 100)}%` }}
                   />
@@ -403,12 +403,12 @@ export default function Dashboard({ session }) {
               <div className="bg-white rounded-xl p-6 shadow-sm">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-2">
-                    <Utensils className="w-5 h-5 text-emerald-500" />
+                    <Utensils className="w-5 h-5 text-sky-500" />
                     <h3 className="font-bold text-gray-800">อาหาร</h3>
                   </div>
                   <button
                     onClick={() => setShowAddFood(true)}
-                    className="p-2 bg-emerald-500 text-white rounded-lg hover:bg-emerald-600 transition-colors"
+                    className="p-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors"
                   >
                     <Plus className="w-4 h-4" />
                   </button>
@@ -519,8 +519,8 @@ export default function Dashboard({ session }) {
                     }}
                     className={`
                       aspect-square rounded-lg flex flex-col items-center justify-center text-sm transition-all
-                      ${isSelected ? 'bg-emerald-500 text-white' : ''}
-                      ${isToday && !isSelected ? 'bg-emerald-100 text-emerald-700' : ''}
+                      ${isSelected ? 'bg-sky-500 text-white' : ''}
+                      ${isToday && !isSelected ? 'bg-sky-100 text-sky-700' : ''}
                       ${!isSelected && !isToday ? 'hover:bg-gray-50' : ''}
                     `}
                   >
@@ -549,7 +549,7 @@ export default function Dashboard({ session }) {
                     type="text"
                     value={newFood.name}
                     onChange={(e) => handleFoodSearch(e.target.value)}
-                    className="w-full px-4 py-3 pr-10 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full px-4 py-3 pr-10 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500"
                     placeholder="พิมพ์ชื่ออาหาร เช่น ข้าวกะเพรา, อกไก่"
                     required
                   />
@@ -569,11 +569,11 @@ export default function Dashboard({ session }) {
                         key={index}
                         type="button"
                         onClick={() => selectFood(food)}
-                        className="w-full px-4 py-3 text-left hover:bg-emerald-50 transition-colors border-b border-gray-100 last:border-0"
+                        className="w-full px-4 py-3 text-left hover:bg-sky-50 transition-colors border-b border-gray-100 last:border-0"
                       >
                         <div className="flex justify-between items-center">
                           <span className="font-medium text-gray-800">{food.name}</span>
-                          <span className="text-sm text-emerald-600">{food.calories} kcal</span>
+                          <span className="text-sm text-sky-600">{food.calories} kcal</span>
                         </div>
                         <div className="flex gap-3 text-xs text-gray-500 mt-1">
                           <span>{food.serving}</span>
@@ -592,7 +592,7 @@ export default function Dashboard({ session }) {
                     type="number"
                     value={newFood.calories}
                     onChange={(e) => setNewFood({ ...newFood, calories: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500"
                     placeholder="kcal"
                     min="0"
                     required
@@ -604,7 +604,7 @@ export default function Dashboard({ session }) {
                     type="number"
                     value={newFood.protein}
                     onChange={(e) => setNewFood({ ...newFood, protein: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-sky-500"
                     placeholder="กรัม"
                     min="0"
                     step="0.1"
@@ -630,7 +630,7 @@ export default function Dashboard({ session }) {
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 py-3 bg-emerald-500 text-white rounded-xl font-medium hover:bg-emerald-600"
+                  className="flex-1 py-3 bg-sky-500 text-white rounded-xl font-medium hover:bg-sky-600"
                 >
                   เพิ่มอาหาร
                 </button>
