@@ -27,8 +27,8 @@ export default function SplashScreen({ onComplete }) {
   return (
     <div className="fixed inset-0 bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-500 flex flex-col items-center justify-center z-50">
       <div className="relative">
-        <div className="w-24 h-24 rounded-3xl bg-white/20 backdrop-blur-sm flex items-center justify-center animate-pulse-slow">
-          <span className="text-5xl animate-bounce-slow">🌱</span>
+        <div className="w-24 h-24 rounded-3xl bg-white/20 backdrop-blur-sm flex items-center justify-center animate-pulse-slow overflow-hidden">
+          <img src="/logo.png" alt="CHocH" className="w-20 h-20 object-contain animate-bounce-slow" />
         </div>
         <div className="absolute -inset-4 rounded-3xl bg-white/10 animate-ping-slow" />
       </div>
